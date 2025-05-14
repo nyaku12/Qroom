@@ -13,6 +13,6 @@ import retrofit2.http.Query;
 public interface ApiService {
     @POST("rooms/create")
     Call<Room> createRoom(@Query("name") String name, @Query("password") String password);
-    @GET("rooms/get-answers") // Заменить на свой эндпоинт
+    @GET("rooms/get-answers")
     Call<List<JoinedUserFragment>> getUsers();
 }
