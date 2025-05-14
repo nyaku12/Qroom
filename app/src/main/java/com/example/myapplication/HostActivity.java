@@ -34,7 +34,7 @@ public class HostActivity extends AppCompatActivity {
             return insets;
         });
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://your.api.url/") // заменить на свой base URL
+                .baseUrl("http://localhost:8080/") // заменить на свой base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
