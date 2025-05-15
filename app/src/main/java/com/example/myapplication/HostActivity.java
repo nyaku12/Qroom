@@ -1,19 +1,15 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.ui.theme.ApiService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HostActivity extends AppCompatActivity {
 
+    private Room room;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,41 +30,29 @@ public class HostActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/api/") // заменить на свой base URL
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ApiService apiService = retrofit.create(ApiService.class);
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewUsers);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<JoinedUserFragment> userList = new ArrayList<>();
-        JoinedUserAdapter adapter = new JoinedUserAdapter(userList);
-        recyclerView.setAdapter(adapter);
-
-// Retrofit вызов
-        Call<List<JoinedUserFragment>> call = apiService.getUsers();
-        call.enqueue(new Callback<List<JoinedUserFragment>>() {
-            @Override
-            public void onResponse(Call<List<JoinedUserFragment>> call, Response<List<JoinedUserFragment>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    userList.clear();
-                    userList.addAll(response.body());
-                    adapter.notifyDataSetChanged(); // обновить список
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<JoinedUserFragment>> call, Throwable t) {
-                // Обработка ошибки
-            }
-        });
-
+        room = getIntent().getParcelableExtra("key_room");
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService service =retrofit.create(ApiService.class);
+        Call<Void> call = service.deleteRoom(room.getId());
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("API", "Room deleted successfully");
+            }
 
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("API", "Failed to delete room", t);
+            }
+        });
+        Log.d("API", "Room: " + room.getName() + " deleted");
+        super.onDestroy();
     }
 }
