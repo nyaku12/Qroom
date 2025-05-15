@@ -19,5 +19,9 @@ public interface ApiService {
     Call<Void> deleteRoom(@Query("room_id") Long id);
 
     @GET("rooms/get-answers")
-    Call<List<JoinedUserFragment>> getUsers();
+    Call<List<JoinedUserFragment>> getAnswers(@Query("room_id") Long id);
+
+    @GET("api/rooms/get-users-ammount")
+    Call<Integer> getAmmount(@Query("room_id") Long id);
+
 }
