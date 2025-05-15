@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.ui.theme.ApiService;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,6 +29,10 @@ public class HostActivity extends AppCompatActivity {
 
     private Room room;
     boolean running = true;
+    private RecyclerView recyclerViewUsers;
+    private JoinedUserAdapter adapter;
+    private List<JoinedUserFragment> userList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,7 @@ public class HostActivity extends AppCompatActivity {
             @Override
             public void run() {
                 while (running) {
-                    runOnUiThread(() -> setUserCount()); // вызываем метод в UI-потоке
+                    runOnUiThread(() -> updateUI()); // вызываем метод в UI-потоке
 
                     try {
                         Thread.sleep(5000); // ждем 5 секунд
@@ -53,6 +60,11 @@ public class HostActivity extends AppCompatActivity {
                 }
             }
         });
+        recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
+        recyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new JoinedUserAdapter(userList);
+        recyclerViewUsers.setAdapter(adapter);
+
         updateThread.start();
         setUserCount();
 
@@ -66,7 +78,39 @@ public class HostActivity extends AppCompatActivity {
     }
     private void updateUI(){
         setUserCount();
+        loadUsers();
     }
+    private void loadUsers() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService service = retrofit.create(ApiService.class);
+        Call<List<JoinedUserFragment>> call = service.getAnswers(room.getId());
+
+        call.enqueue(new Callback<List<JoinedUserFragment>>() {
+            @Override
+            public void onResponse(Call<List<JoinedUserFragment>> call, Response<List<JoinedUserFragment>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    userList.clear();
+                    userList.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+                    Log.d("API", "Users updated: " + userList.size());
+                    Log.d("API", "body: " + response.body().toString());
+                } else {
+                    Log.e("API", "Response empty or failed");
+                    Log.e("API", "Response code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<JoinedUserFragment>> call, Throwable t) {
+                Log.e("API", "Failed to get users", t);
+            }
+        });
+    }
+
     private void deleteRoom(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:8080/")

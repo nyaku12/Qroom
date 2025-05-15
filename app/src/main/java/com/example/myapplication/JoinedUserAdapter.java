@@ -19,13 +19,13 @@ public class JoinedUserAdapter extends RecyclerView.Adapter<JoinedUserAdapter.Us
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView textUsername;
 
-        TextView textLastMessage;
+        TextView answ;
         TextView textUserId;
 
         public UserViewHolder(View itemView) {
             super(itemView);
             textUsername = itemView.findViewById(R.id.textUsername);
-            textLastMessage = itemView.findViewById(R.id.textLastMessage);
+            answ = itemView.findViewById(R.id.textLastMessage);
             textUserId = itemView.findViewById(R.id.textUserId);
         }
     }
@@ -37,12 +37,11 @@ public class JoinedUserAdapter extends RecyclerView.Adapter<JoinedUserAdapter.Us
         return new UserViewHolder(view);
     }
 
-    @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
         JoinedUserFragment user = userList.get(position);
-        holder.textUsername.setText(user.getUsername());
-        holder.textUserId.setText("ID: " + user.getId());
-        holder.textLastMessage.setText(user.getLastMessage());
+        holder.textUsername.setText(user.getUsername() != null ? user.getUsername() : "");
+        holder.textUserId.setText("ID: " + (user.getId() != null ? user.getId() : ""));
+        holder.answ.setText(user.getLastMessage() != null ? user.getLastMessage() : "");
     }
 
     @Override
