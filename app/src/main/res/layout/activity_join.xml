@@ -7,51 +7,87 @@
     android:layout_height="match_parent"
     tools:context=".Join_Activity">
 
+    <!-- Направляющие для позиционирования полей -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/codeguide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"/>
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/userguide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/passguide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/confirmguide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.70" />
 
+    <!-- Заголовок приложения -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/app_name"
         android:gravity="center"
         android:background="#D6D6D6"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
+    <!-- Поле для кода комнаты -->
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextRoomCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:hint="Enter room name"
         android:inputType="text"
-        android:text=""
-        android:hint="Введите код комнаты"
         app:layout_constraintTop_toTopOf="@id/codeguide"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Поле для имени пользователя -->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter username"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="@id/userguide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Поле для пароля -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter room password"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toTopOf="@id/passguide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Кнопка присоединения -->
     <Button
         android:id="@+id/Join_Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:text="Присоедениться"
-        app:layout_constraintBottom_toBottomOf="@id/confirmguide"/>
-
+        android:text="Join Room"
+        app:layout_constraintTop_toTopOf="@id/confirmguide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
