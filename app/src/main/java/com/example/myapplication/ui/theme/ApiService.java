@@ -32,4 +32,7 @@ public interface ApiService {
     @GET("api/rooms/get-users-ammount")
     Call<Integer> getAmmount(@Query("room_id") Long id);
 
+    @POST("api/answers/create")
+    Call<Void> sendAnswer(@Query("user_id") Long uId, @Query("room_id") Long rId, @Query("answ") String answ);
+
 }
