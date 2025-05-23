@@ -8,17 +8,16 @@
     <!-- Заголовок или название экрана -->
     <TextView
         android:id="@+id/room_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Room"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:background="#D6D6D6"
+        android:text="@string/app_name"
         android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Поле для ввода названия комнаты -->
     <EditText
