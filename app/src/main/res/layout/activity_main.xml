@@ -5,14 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121212"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textColor="#E0E0E0"
         android:gravity="center"
-        android:background="#D6D6D6"
+        android:background="#1F1F1F"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,14 +40,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Присоедениться к комнате"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#333333"
         app:layout_constraintTop_toTopOf="@id/guideline_join"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/Create_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Создать комнату"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#333333"
         app:layout_constraintTop_toTopOf="@id/guideline_create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

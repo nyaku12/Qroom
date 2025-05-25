@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="16dp"
     tools:context=".Join_Activity">
 
-    <!-- Направляющие для позиционирования полей -->
+    <!-- Направляющие для позиционирования -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/codeguide"
         android:layout_width="wrap_content"
@@ -36,46 +39,58 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.70" />
 
-    <!-- Заголовок приложения -->
+    <!-- Заголовок -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/app_name"
         android:gravity="center"
-        android:background="#D6D6D6"
+        android:background="#1F1F1F"
+        android:textColor="#E0E0E0"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Поле для кода комнаты -->
+    <!-- Поле: код комнаты -->
     <EditText
         android:id="@+id/editTextRoomCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter room name"
         android:inputType="text"
+        android:backgroundTint="#333333"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
         app:layout_constraintTop_toTopOf="@id/codeguide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Поле для имени пользователя -->
+    <!-- Поле: имя пользователя -->
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter username"
         android:inputType="textPersonName"
+        android:backgroundTint="#333333"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
         app:layout_constraintTop_toTopOf="@id/userguide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Поле для пароля -->
+    <!-- Поле: пароль -->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter room password"
         android:inputType="textPassword"
+        android:backgroundTint="#333333"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
         app:layout_constraintTop_toTopOf="@id/passguide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -86,6 +101,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Join Room"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#333333"
         app:layout_constraintTop_toTopOf="@id/confirmguide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

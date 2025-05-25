@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/create_room_activity_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212">
 
     <!-- Заголовок или название экрана -->
     <TextView
@@ -11,10 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:gravity="center"
-        android:background="#D6D6D6"
+        android:background="#1F1F1F"
         android:text="@string/app_name"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="#E0E0E0"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -25,10 +28,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Room Name"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:background="#1F1F1F"
+        android:padding="12dp"
+        android:inputType="text"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="32dp"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/room_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -39,10 +46,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Room Password"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:background="#1F1F1F"
+        android:padding="12dp"
+        android:inputType="textPassword"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/room_name_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -52,7 +63,9 @@
         android:id="@+id/create_room_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Create Room"
+        android:text="Создать комнату"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#333333"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@id/room_password_input"
         app:layout_constraintStart_toStartOf="parent"
