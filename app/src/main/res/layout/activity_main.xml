@@ -37,9 +37,9 @@
 
     <Button
         android:id="@+id/Join_Button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Присоедениться к комнате"
+        android:text="Присоединиться к комнате"
         android:textColor="#FFFFFF"
         android:backgroundTint="#333333"
         app:layout_constraintTop_toTopOf="@id/guideline_join"
@@ -48,7 +48,7 @@
 
     <Button
         android:id="@+id/Create_Button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Создать комнату"
         android:textColor="#FFFFFF"
