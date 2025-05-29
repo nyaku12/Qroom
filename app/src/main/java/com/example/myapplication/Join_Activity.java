@@ -38,7 +38,7 @@ public class Join_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8080/")
+                        .baseUrl(getString(R.string.zork_url))
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 EditText room_password = findViewById(R.id.editTextPassword);

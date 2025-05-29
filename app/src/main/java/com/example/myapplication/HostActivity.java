@@ -82,7 +82,7 @@ public class HostActivity extends AppCompatActivity {
     }
     private void loadUsers() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(getString(R.string.zork_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -113,7 +113,7 @@ public class HostActivity extends AppCompatActivity {
 
     private void deleteRoom(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(getString(R.string.zork_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService service =retrofit.create(ApiService.class);
@@ -133,7 +133,7 @@ public class HostActivity extends AppCompatActivity {
     }
     private void setUserCount (){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl(getString(R.string.zork_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService service =retrofit.create(ApiService.class);

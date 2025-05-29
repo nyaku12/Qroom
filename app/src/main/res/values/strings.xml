@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Qroom</string>
-    <string name="title_activity_main2">MainActivity2</string>
+    <string name="zork_url">https://somename.share.arsnotfound.me:443</string>
 </resources>
