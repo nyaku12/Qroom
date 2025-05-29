@@ -13,6 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiService {
+    //создание/удаление комнаты
     @POST("api/rooms/create")
     Call<Room> createRoom(@Query("name") String name, @Query("password") String password);
 
@@ -25,10 +26,12 @@ public interface ApiService {
     @POST("api/rooms/get-answers")
     Call<List<JoinedUserFragment>> getAnswers(@Query("room_id") Long id);
 
+    //создание пользователя
     @POST("api/users/create")
     Call<User> createUser(@Query("username") String username, @Query("room_id") Long id);
 
 
+    //не оч эффективно, перепиши лучше
     @GET("api/rooms/get-users-ammount")
     Call<Integer> getAmmount(@Query("room_id") Long id);
 

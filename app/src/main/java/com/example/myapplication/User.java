@@ -15,7 +15,6 @@ public class User implements Parcelable {
         this.roomId = roomId;
     }
 
-    // Parcelable constructor
     protected User(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
@@ -55,7 +54,6 @@ public class User implements Parcelable {
         }
     };
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

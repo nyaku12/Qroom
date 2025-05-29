@@ -8,7 +8,6 @@ public class Room implements Parcelable {
     private String name;
     private String password;
 
-    // Конструкторы
     public Room() {}
 
     public Room(String name, String password) {
@@ -16,7 +15,6 @@ public class Room implements Parcelable {
         this.password = password;
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
@@ -45,7 +43,26 @@ public class Room implements Parcelable {
         System.out.println(this.name);
     }
 
-    // Parcelable implementation
+/*
+       name = in.readString();
+        password = in.readString();
+    }
+
+    public static final Creator<Room> CREATOR = new Creator<Room>() {
+        @Override
+        public Room createFromParcel(Parcel in) {
+            return new Room(in);
+        }
+
+        @Override
+        public Room[] newArray(int size) {
+            return new Room[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+ */
 
     protected Room(Parcel in) {
         if (in.readByte() == 0) {
